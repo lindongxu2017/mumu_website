@@ -6,6 +6,7 @@ import about from '@/view/about'
 import work from '@/view/work'
 import strategy from '@/view/strategy'
 import contact from '@/view/contact'
+import detail from '@/view/detail'
 
 Vue.use(Router)
 
@@ -35,6 +36,11 @@ export default new Router({
             path: '/contact',
             name: 'contact',
             component: contact
+        },
+        {
+            path: '/detail/:id',
+            name: 'detail',
+            component: detail
         }
     ]
 })

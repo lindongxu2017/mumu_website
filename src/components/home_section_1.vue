@@ -3,8 +3,8 @@
         <div class="logo-wrapper">
             <img src="@/assets/logo.png">
             <div class="info">
-                <div class="cn">一站式品牌服务，助力品牌成就</div>
-                <div class="en">One-step&nbsp&nbspbrand&nbsp&nbspservice&nbsp&nbspto&nbsp&nbsphelp&nbsp&nbspachievements</div>
+                <div class="cn" v-html="info.top_title_china">一站式品牌服务，助力品牌成就</div>
+                <div class="en" v-html="info.top_title_englist">One-step brand service to help achievements</div>
             </div>
         </div>
     </div>
@@ -18,6 +18,7 @@
                 clientHeight: 937
             }
         },
+        props: ['info'],
         created () {
             this.clientHeight = window.innerHeight
         },
@@ -62,10 +63,11 @@
     }
     .cn {
         font-size: 24px;
+        font-weight: bold;
         margin-bottom: 10px;
-        letter-spacing: 1px;
+        letter-spacing: 2px;
     }
     .en {
-        font-size: 16px;
+        font-size: 18px;
     }
 </style>

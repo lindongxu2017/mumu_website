@@ -1,12 +1,12 @@
 <template>
     <div class="home">
-        <section-one/>
+        <section-one :info="about_info"/>
         <section-two :info="about_info"/>
-        <section-three/>
+        <section-three :info="about_info"/>
         <section-four :list="list_swiper" />
         <cell-title :title="'更多案例'"/>
-        <section-five :list="case_list"/>
-        <cell-title :title="'那些与我们合作愉快的伙伴们'"/>
+        <section-five :info="about_info" :list="case_list"/>
+        <cell-title :title="'合作伙伴'"/>
         <section-six :list="partner"/>
     </div>
 </template>

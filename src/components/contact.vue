@@ -1,8 +1,8 @@
 <template>
     <div class="contact" v-if="is_show">
         <div class="en">
-            <span>KEEN FOR YOUR BRANDS TO</span>
-            <span class="black">MAKE A SPLASH</span>
+            <span v-html="info.CUE_WORDS">KEEN FOR YOUR BRANDS TO</span>
+            <!-- <span class="black">MAKE A SPLASH</span> -->
         </div>
         <div class="cn">您可以通过邮箱 <span v-html="info.CONTACT_EMAIL"></span> 联系我们，也可以直接打电话，期待您的光临。</div>
         <div class="link">
@@ -52,7 +52,7 @@
         color: #fff;
     }
     .black {
-        color: #000;
+        /*color: #000;*/
     }
     .en {
         font-size: 28px;

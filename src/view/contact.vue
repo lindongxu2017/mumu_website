@@ -3,7 +3,7 @@
         <div class="intro">
             <div class="title">联系我们</div>
             <el-row>
-                <el-col :span="22" :offset="1" class="text" v-html="">
+                <el-col :span="22" :offset="1" class="text" v-html="info_1.desc">
                     MUMU 是知名的品牌建设机构。我们为在竞争激烈的市场中运营的老牌企业创造世界级品牌。填写下面的表格<br/>
                     与我们联系。您也可以在WEIBO 或 LINKEDIN上进行联系。
                 </el-col>
@@ -28,7 +28,7 @@
                             <img class="qr-code" :src="info_1.qrcode">
                         </div>
                         <div class="cell">
-                            <span @click="links">查看地图</span>
+                            <span @click="links()">查看地图</span>
                         </div>
                     </div>
                     <div class="down">
@@ -162,7 +162,7 @@
                 })
             },
             links (url) {
-                location.href = url || this.info_1.map_url
+                location.href = (url || this.info_1.map_url).indexOf('http') > -1 ? (url || this.info_1.map_url) : 'http://' + (url || this.info_1.map_url)
             },
             submit_form () {
                 this.axios.post('/index.php?s=Home/Contact/message_submit', this.form).then(res => {

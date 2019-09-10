@@ -14,13 +14,13 @@
             <el-col :span="8" :offset="3" class="info">
                 <div class="cell">
                     <div class="cell-title">
-                        <div class="border-b">Shenzhen</div>
+                        <div class="border-b weight">Shenzhen</div>
                     </div>
                     <div class="content-text" v-html="info.ADDRESS">深圳市 福田区 深南大道 6031号 杭钢富春商务大厦 1109-1011 号</div>
                     <div class="content-text">信件地址： 深圳市 福田区 深南大道 6031号 杭钢富春商务大厦 1109-1011 号</div>
                 </div>
                 <div class="cell">
-                    <div class="cell-title">联系我们</div>
+                    <div class="cell-title weight">联系我们</div>
                     <div class="content-text" v-html="info.CONTACT_EMAIL">brand@mumu.com</div>
                 </div>
                 <div class="cell">
@@ -58,12 +58,13 @@
                 }
             },
             gohome () {
-                if (this.$route.path != 'home') {
+                if (this.$route.name != 'home') {
                     this.$router.push({name: 'home'})
                 }
             },
             goRoute (url) {
-                location.href = url
+                console.log(url)
+                location.href = url.indexOf('http') > -1 ? url : 'http://' + url
             }
         }
     }
@@ -76,7 +77,7 @@
         color: #fff;
     }
     .logo img {
-        width: 25px;
+        width: 70px;
         cursor: pointer;
     }
     .links {
@@ -86,7 +87,9 @@
         -webkit-justify-content: flex-end;
     }
     .links .item {
-        font-size: 14px;
+        margin-top: 7px;
+        font-size: 18px;
+        /*font-weight: 700;*/
         margin-left: 40px;
         color: #fff;
         cursor: pointer;
@@ -111,7 +114,8 @@
         width: 100%;
     }
     .cell {
-        margin-bottom: 30px;
+        margin-bottom: 20px;
+        line-height: 23px;
     }
     .info .cell:last-child {
         margin-bottom: 0;
@@ -125,9 +129,7 @@
         display: inline-block;
     }
     .content-text {
-        width: 120%;
-        font-size: 13px;
-        transform: scale(0.83);
+        font-size: 14px;
         transform-origin: left;
     }
     .map {
@@ -143,5 +145,9 @@
         bottom: -2px;
         left: 25%;
         background-color: #fff;
+    }
+    .weight {
+        font-size: 16px;
+        font-weight: 700;
     }
 </style>

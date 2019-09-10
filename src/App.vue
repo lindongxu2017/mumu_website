@@ -55,10 +55,15 @@
     }
 </script>
 <style>
-html, body {
+/*html, body {
     width: 100%;
     max-width: 1920px;
     margin: 0 auto;
+}*/
+
+* {
+    margin: 0;
+    padding: 0;
 }
 
 body{
@@ -71,8 +76,8 @@ video#bgvid  {
     top: 0;
     bottom:0;
     min-height:100%;
-    max-width: 1920px;
-    min-width: 1920px;
+    /*max-width: 1920px;
+    min-width: 1920px;*/
     width: 100%;
     height: auto;
     z-index:-100;

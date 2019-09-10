@@ -1,19 +1,20 @@
 <template>
-    <div class="header-nav" :style="{backgroundColor: 'rgba(0,0,0,'+ opacity +')'}">
+    <div :class="['header-nav', current_path != '/' ? 'reverse' : '']" :style="{backgroundColor: 'rgba(0,0,0,'+ opacity +')'}">
         <el-row >
-            <el-col :span="5" :offset="1">
+            <el-col :span="6">
                 <div class="logo-wrapper">
                     <div class="logo" @click="gohome">
-                        <img src="@/assets/logo.png">
+                        <img v-if="current_path == '/'" src="@/assets/logo.png">
+                        <img v-else src="@/assets/logo_revise.jpg">
                     </div>
-                    <div class="brand-text" @click="gohome">
+                    <div :class="['brand-text', current_path != '/' ? 'reverse' : '']" @click="gohome">
                         <div v-html="info.WEB_SITE_DESCRIPTION || 'BRAND OF THE FUTURE'"></div>
                         <div v-html="info.WEB_SITE_TITLE || '木目品牌咨询服务'"></div>
                     </div>
                 </div>
             </el-col>
-            <el-col :span="17" class="links">
-                <div :class="['item', current_path == item.url ? 'active' : '']" v-for="(item, index) in link" :key="index" v-html="item.title" @click="router(item.url)"></div>
+            <el-col :span="18" class="links">
+                <div :class="['item', current_path != '/' ? 'reverse' : '', current_path == item.url ? 'active' : '']" v-for="(item, index) in link" :key="index" v-html="item.title" @click="router(item.url)"></div>
             </el-col>
         </el-row>
     </div>
@@ -24,7 +25,7 @@
         name: 'header-nav',
         data () {
             return {
-                opacity: 0.1,
+                opacity: 0,
                 current_path: ''
             }
         },
@@ -40,14 +41,14 @@
             this.highlight()
             window.addEventListener("scroll", function (e) {
                 if (self.$route.name == 'home') {
-                    self.opacity = 0.1 + document.documentElement.scrollTop / 500
+                    self.opacity = 0 + document.documentElement.scrollTop / 500
                 }
             });
         },
         methods: {
             highlight () {
                 if (this.$route.name == 'home') {
-                    this.opacity = 0.1
+                    this.opacity = 0
                 } else {
                     this.opacity = 1
                 }
@@ -59,8 +60,10 @@
                 }
             },
             gohome () {
-                if (this.$route.path != 'home') {
+                if (this.$route.path != '/') {
                     this.$router.push({name: 'home'})
+                } else {
+                    location.reload()
                 }
             }
         }
@@ -71,16 +74,22 @@
     .header-nav {
         position: fixed;
         width: 100%;
-        max-width: 1920px;
+        /*max-width: 1920px;*/
         top: 0;
-        padding: 25px 0 20px;
+        padding: 25px 4.16667% 20px;
         z-index: 3;
+        box-sizing: border-box;
+    }
+    @media screen and (min-width: 1920px) {
+        .header-nav {
+            padding: 25px 80px 20px;
+        }
     }
     .logo-wrapper, .links {
         display: flex;
         display: -webkit-flex;
-        align-items: center;
-        -webkit-align-items: center;
+        align-items: stretch;
+        -webkit-align-items: stretch;
     }
     .logo {
         padding-right: 10px;
@@ -90,16 +99,19 @@
         position: relative;
     }
     .logo img {
-        width: 70px;
+        width: 85px;
         display: block;
     }
     .brand-text {
-        font-size: 12px;
+        font-size: 14px;
         color: #fff;
         cursor: pointer;
         user-select: none;
         -webkit-user-select: none;
         position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
     }
     .links {
         justify-content: flex-end;
@@ -107,13 +119,14 @@
         margin-top: 9px;
     }
     .links .item {
-        font-size: 16px;
+        font-size: 18px;
         margin-left: 65px;
         color: #fff;
         cursor: pointer;
         user-select: none;
         -webkit-user-select: none;
         position: relative;
+        font-weight: bold;
     }
     .links .item:hover:before {
         width: 100%;
@@ -128,7 +141,14 @@
         bottom: -2px;
         transition: all 0.2s ease;
     }
+    .links .item.reverse.active:before, .links .item.reverse:before {
+        background-color: #000;
+    }
     .links .item.active:before {
         width: 100%;
+    }
+    .reverse {
+        background-color: #fff!important;
+        color: #000!important;
     }
 </style>

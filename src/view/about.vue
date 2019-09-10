@@ -94,7 +94,7 @@
 
 <style scoped>
     .about {
-        padding-top: 75px;
+        padding-top: 80px;
     }
     .banner {
         position: relative;
@@ -105,21 +105,30 @@
     }
     .banner .title {
         position: absolute;
-        left: 50%;
-        top: 40%;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background-color: rgba(0,0,0,0.3);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
         font-size: 32px;
         color: #fff;
+        /*left: 50%;
+        top: 40%;
         margin-left: -526.61px;
-        letter-spacing: 2px;
+        letter-spacing: 2px;*/
     }
     .white-bg {
         text-align: center;
-        padding: 100px 20%;
+        padding: 100px 8%;
         background-color: #fff;
     }
     .white-bg .title {
-        font-size: 28px;
-        margin-bottom: 40px;
+        font-size: 34px;
+        margin-bottom: 20px;
     }
     .content {
         font-size: 14px;
@@ -144,7 +153,7 @@
         background-color: #fff;
     }
     .brand-list .title {
-        font-size: 28px;
+        font-size: 34px;
         color: #000;
         text-align: center;
         margin-bottom: 50px;
@@ -175,7 +184,7 @@
         background-color: #333;
         color: #fff;
         text-align: center;
-        font-size: 28px;
+        font-size: 34px;
     }
     .team-list {
         padding: 100px 0 70px;
@@ -207,9 +216,12 @@
     .item .username {
         font-size: 16px;
         font-weight: bold;
+        line-height: 1;
+        margin-bottom: 5px;
     }
     .item .user-intro {
         font-size: 12px;
         color: #666;
+        line-height: 1;
     }
 </style>

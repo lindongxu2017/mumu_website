@@ -1,7 +1,7 @@
 <template>
     <div class="sectionTwo">
         <el-row>
-            <el-col :span="1" :offset="1">About</el-col>
+            <el-col :span="1" :offset="1" style="padding-top: 2px; font-weight: bold;">About</el-col>
             <el-col :span="17" :offset="2">
                 <div v-html="info ? info.about : ''"></div>
                 <!-- <div class="cn">
